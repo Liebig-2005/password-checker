@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Home() {
   const [password, setPassword] = useState("");
   const [result, setResult] = useState(null);
-  const [score, setScore] = useState(0);
+  //const [score, setScore] = useState(0);
 
   const [options, setOptions] = useState({
     length: 12,
