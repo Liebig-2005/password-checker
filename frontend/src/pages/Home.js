@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Home() {
   const [password, setPassword] = useState("");
   const [result, setResult] = useState(null);
-  const [score, setScore] = useState(0); // ✅ restored score state
+  const [score, setScore] = useState(0); // restored score state
 
   const [options, setOptions] = useState({
     length: 12,
@@ -48,7 +48,7 @@ export default function Home() {
     analyze(password);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL; // ✅ use env variable
+      const API_URL = import.meta.env.VITE_API_URL; // use env variable
       const res = await fetch(`${API_URL}/check-password`, {
         method: "POST",
         headers: {
@@ -58,6 +58,7 @@ export default function Home() {
       });
 
       const data = await res.json();
+      console.log("API response:", data); // helpful for debugging
       setResult(data);
     } catch (err) {
       console.error("Error checking password:", err);
@@ -118,9 +119,13 @@ export default function Home() {
 
       {/* RESULT */}
       {result && (
-        <div className="text-gray-700 text-sm">
+        <div
+          className={`text-sm ${
+            result.breached ? "text-red-600" : "text-green-600"
+          }`}
+        >
           {result.breached
-            ? `Exposed ${result.count} times`
+            ? `Exposed ${result.count || 0} times`
             : "No known breaches"}
         </div>
       )}
