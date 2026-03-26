@@ -1,0 +1,10 @@
+[
+  { "password": "123456", "count": 23000000 },
+  { "password": "password", "count": 18000000 },
+  { "password": "123456789", "count": 15000000 },
+  { "password": "qwerty", "count": 10000000 },
+  { "password": "abc123", "count": 9000000 },
+  { "password": "admin", "count": 8000000 },
+  { "password": "letmein", "count": 7000000 },
+  { "password": "welcome", "count": 6000000 }
+]
