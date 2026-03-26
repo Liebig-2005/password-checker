@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Home() {
   const [password, setPassword] = useState("");
   const [result, setResult] = useState(null);
-  //const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0); // ✅ restored score state
 
   const [options, setOptions] = useState({
     length: 12,
@@ -13,7 +13,7 @@ export default function Home() {
     symbol: false,
   });
 
-  // strength
+  // strength analyzer
   const analyze = (pwd) => {
     let s = 0;
     if (pwd.length >= 12) s++;
@@ -76,7 +76,6 @@ export default function Home() {
         />
 
         <div className="flex gap-3">
-          {/* FIXED */}
           <button
             onClick={check}
             className="px-6 py-2 bg-black text-white rounded-full text-sm"
@@ -84,7 +83,6 @@ export default function Home() {
             Analyze
           </button>
 
-          {/* GENERATOR BUTTON */}
           <button
             onClick={generate}
             className="px-6 py-2 border border-gray-300 text-black rounded-full text-sm hover:bg-gray-100"
@@ -114,6 +112,9 @@ export default function Home() {
           </label>
         ))}
       </div>
+
+      {/* STRENGTH SCORE */}
+      <div className="text-gray-700 text-sm">Strength: {score}/5</div>
 
       {/* RESULT */}
       {result && (
